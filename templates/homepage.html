@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>MoodTracker</title>
-</head>
-<body>
-    <h1>Welcome To Your Mood Tracker!</h1>
-
+{% extends "base.html" %}\
+{% block content %}
     {% for post in posts %}
         <h1>{{ post.title }}</h1>
         <p>By {{ post.author }} on {{ post.date_posted }}</p>
         <p>{{ post.content }}</p>
     {% endfor%}
+{% endblock content %}
 
-</body>
-</html>
+
