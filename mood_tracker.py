@@ -1,37 +1,35 @@
 
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, request, session
 from model import db
 
 
 app = Flask(__name__)
 
-posts = [
-        {
-        'author': 'Erica',
-        'title': 'mood record 1',
-        'content': 'Today is a bad day!',
-        'date_posted': 'Oct 30th, 2019'
-        },
-        {
-        'author': 'Tiffany',
-        'title': 'mood record 2',
-        'content': 'Today is a good day!',
-        'date_posted': 'Nov 31th, 2019'
-        }
-]
-
 
 @app.route('/')
-@app.route('/home')
-def home():
-    return render_template('homepage.html', posts=posts)
+def show_homepage():
+    """Show homepage for user."""
+
+    if 'name' in session:
+        return redirect('/user-homepage.html')
+    
 
 
-@app.route('/about')
-def about():
-    return render_template('about.html', title='About')
+    return render_template('homepage.html')
 
 
+@app.route('/get-name')
+def get_name():
+    """Get name from homepage form and store name in session."""
+
+    return render_template('/registration.html')
+
+
+@app.route('/user-homepage')
+def show_user_homepage():
+    """Show user's homepage including: user profile and main feature."""
+    pass
 
 if __name__ == '__main__':
+    app.secret_key = 'super secret key'
     app.run(host='0.0.0.0', debug=True)

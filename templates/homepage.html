@@ -1,10 +1,32 @@
 {% extends "base.html" %}\
 {% block content %}
-    {% for post in posts %}
-        <h1>{{ post.title }}</h1>
-        <p>By {{ post.author }} on {{ post.date_posted }}</p>
-        <p>{{ post.content }}</p>
-    {% endfor%}
+    <h1>Find Your Darkness. Find Your Strength
+    </h1>
+
+    <form action='/get-name'>
+        
+        <label>Username:<br>
+            <input type="text" name="name" required>
+        </label><br>
+        
+        <label>Password:<br>
+            <input type="password" name="password" required>
+        </label><br>
+     
+        <input type="submit" value="Log In"> 
+    </form>
+
+    <form action='/change-password'>
+        <input type="submit" value="Forget Password?">
+
+    </form>
+    
+    <form action='/get-name'>
+        <label>New to here?
+            <input type="submit" value="Sign Up">
+        </label>
+    </form>
+
 {% endblock content %}
 
 
