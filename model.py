@@ -12,13 +12,13 @@ class User(db.Model):
 
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     username = db.Column(db.String(30), unique=True, nullable=False)
-    fname = db.Column(db.String(15), nullable=False)
-    lname = db.Column(db.String(15), nullable=False)
+    gender = db.Column(db.String(20))
     email = db.Column(db.String(150), unique=True, nullable=False)
-    image_file = db.Column(db.String(20),
+    image_file = db.Column(db.String(50),
                            nullable=False,
                            default='/static/default.img')
     password = db.Column(db.String(50), nullable=False)
+    birthday = db.Column(db.String(30), nullable=False)
     
     posts = db.relationship('Post', backref='author')
     moodrecord = db.relationship('Moodrecord', backref='author')
