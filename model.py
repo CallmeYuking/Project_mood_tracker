@@ -43,6 +43,7 @@ class Moodrecord(db.Model):
     exercise = db.Column(db.Text)   
     mood_evaluate = db.Column(db.Text, nullable=False)
     notes = db.Column(db.Text)
+    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.now)
     
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 

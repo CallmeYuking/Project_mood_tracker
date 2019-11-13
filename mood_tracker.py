@@ -24,7 +24,7 @@ def register():
     return render_template('/registration.html')
 
 
-@app.route('/get-name', methods = ['get'])
+@app.route('/get-name', methods = ['GET'])
 def get_name():
     """Get name from homepage form and store name in session."""
 
@@ -40,19 +40,33 @@ def get_name():
 
 
 
-@app.route('/get-user-info', methods = ['get', 'post'])
+@app.route('/get-user-info', methods = ['GET', 'POST'])
 def get_user_info():
     """Get user's information from register and update to database"""
-    username = request.args.get('username')
-    gender = request.args.get('')
-    email = request.args.get('email')
-    password = request.args.get('password')
-    birthday = request.args.get('month', 'day', 'year')
+    username = request.form.get('username')
+    gender = request.form.get('')
+    email = request.form.get('email')
+    password = request.form.get('password')
+    password1 = request.form.get('password1')
+    month = request.form.get('month')
+    day = request.form.get('day')
+    year = request.form.get('year')
+    birthday = f'{month} {day} {year}'
+    # birthday = dateTime.date(month, day, year)
+    new_user = User(username = username, gender = gender, email = email, password = password, birthday = birthday)
 
+    if password != password1:
+        flash("Password doesn't match! Please check again!")
+        return render_template('/registration.html')
+    else:
+        db.session.add(new_user)
+        db.session.commit()
 
+        flash("You're successfully registered!")
+        return redirect('/')
     
 
-    pass
+    
 
 
 @app.route('/user-homepage')

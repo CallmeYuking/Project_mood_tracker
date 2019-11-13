@@ -2,13 +2,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"></script>
   <title>User Register</title>
 </head>
 <body>
 
   <h1>Register</h1>
 
-  <form>
+  <form action="/get-user-info" method="post">
     <div>Username:
       <input type="Text" name="username" required>
     </div>
@@ -26,10 +30,11 @@
 
     <div>
       <label for="email">Email:</label>
-      <input type="email" name="email" id="email" required placeholder="your email">
+      <input type="email" name="email" id="email" required placeholder="your email"><br>
 
       <label for="password">Password:</label>
       <input type="password" name="password" id="password" pattern=".{5,10}" placeholder="your password" required title="5 to 10 characters">
+      <input type="password" name="password1" id="password1" pattern=".{5,10}" placeholder="check your password" required title="5 to 10 characters">
     </div>
 
 
@@ -71,14 +76,14 @@
       <label for="checkbox">I agree to the terms and conditions</label>
       <input type="checkbox" name="checkbox" id="checkbox" />
     </div>
+   
 
 <!-- update new user's information to the database. -->
     <div>
-      <form action='/get-user-info' method="post">
-        <input type="submit" value="Submit" />
-      </form>
+        <input type="submit" value="submit" />
     </div>
-  </form>  
-
+  </form> 
 </body>
+
+  <script type="text/javascript" src=""></script>
 </html>
