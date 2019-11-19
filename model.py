@@ -21,7 +21,7 @@ class User(db.Model):
     birthday = db.Column(db.String(30), nullable=False)
     
     posts = db.relationship('Post', backref='author')
-    moodrecord = db.relationship('Moodrecord', backref='author')
+    moodrecords = db.relationship('Moodrecord', backref='author')
 
     def __repr__(self):
         return f"""(User username={self.username}

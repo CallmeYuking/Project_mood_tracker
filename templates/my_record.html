@@ -4,7 +4,7 @@
     <title>My Record</title>
 </head>
 <body>
-    <form>
+    <form action="/get-user-record", method="post">
         <thead>
             <tr>
                <th>list</th> 
@@ -66,6 +66,11 @@
         </table>
 
         <input type="submit" name="submit" value="create">
+        
+    </form>
+
+    <form action="/user-homepage" method="get">
+        <input type="submit" name="cancel" value="cancel">
     </form>
 
 </body>
