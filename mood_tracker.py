@@ -132,7 +132,7 @@ def get_user_record():
     db.session.commit()
 
     flash("You've created a new mood record!")
-    return redirect('/user-homepage')
+    return render_template("my_record.html")
 
 @app.route('/get-user-story', methods = ['GET', 'POST'])
 def get_user_story():
@@ -151,6 +151,22 @@ def get_user_story():
 
     db.session.add(user_story)
     db.session.commit()
+
+    flash("You've created a new mood record!")
+    return render_template("my_story.html")
+
+@app.route("/mood_record", methods=['GET'])
+def mood_record():
+    """Show up all the mood records from the history."""
+
+
+    return render_template("mood_history.html")
+
+@app.route("/story_history", methods=['GET'])
+def story_history():
+    """Show uo all the story records from the history."""
+
+    return render_template("story_history.html")
 
 if __name__ == '__main__':
     connect_to_db(app)
